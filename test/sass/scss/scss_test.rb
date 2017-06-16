@@ -3825,27 +3825,6 @@ CSS
 SCSS
   end
 
-  def test_reference_combinator_with_parent_ref
-    silence_warnings {assert_equal <<CSS, render(<<SCSS)}
-a /foo/ b {
-  c: d; }
-CSS
-a {& /foo/ b {c: d}}
-SCSS
-  end
-
-  def test_reference_combinator_warning
-    assert_warning(<<WARNING) {assert_equal <<CSS, render(<<SCSS)}
-DEPRECATION WARNING on line 1, column 8 of test_reference_combinator_warning_inline.scss:
-The reference combinator /foo/ is deprecated and will be removed in a future release.
-WARNING
-a /foo/ b {
-  c: d; }
-CSS
-a {& /foo/ b {c: d}}
-SCSS
-  end
-
   def test_newline_selector_rendered_multiple_times
     assert_equal <<CSS, render(<<SCSS)
 form input,
